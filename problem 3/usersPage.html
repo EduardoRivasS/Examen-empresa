@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Task</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <label id="alertDelete"></label>
+    <div class="container">
+      <div class="row" style="margin-top: 50px">
+        <div
+          class="d-grid gap-2 d-md-flex justify-content-md-end"
+          style="margin-top: 25px"
+        >
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Add User
+          </button>
+          <button
+            type="button"
+            class="btn btn-info"
+            onclick="window.location='listTask.html'"
+          >
+            Tasks
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="window.location='loginPage.html'"
+          >
+            Log Out
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row" style="margin-top: 50px">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">User Name</th>
+            </tr>
+          </thead>
+          <tbody id="task-container"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="taskModal"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <form id="modal-container">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add User Modal</h5>
+            </div>
+            <div class="modal-body">
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="username"
+                style="margin-top: 20px;"
+              />
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="password"
+                style="margin-top: 20px;"
+              />
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                onclick="closeModal()"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="addUser()"
+                data-bs-dismiss="modal"
+                id="btnUser"
+              >
+                Add User
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyC6YS0k_X0VJqOdPmvipe-s9J2gyE-_L3A",
+        authDomain: "web-jr-test.firebaseapp.com",
+        projectId: "web-jr-test",
+        storageBucket: "web-jr-test.appspot.com",
+        messagingSenderId: "599200265672",
+        appId: "1:599200265672:web:79d9ba41ba11972a8f3cfd",
+        measurementId: "G-M2QNKYHKY1",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="users.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

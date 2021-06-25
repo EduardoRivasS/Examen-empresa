@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coins</title>
+</head>
+<body>
+    <h2>Problem 1</h2>
+    <input type="number" id="number">ingresa el numero</input>
+    <button onclick="problem1()">Aceptar</button>
+
+    <h2>Problem 2</h2>
+    <input type="text" id="phrase" required>ingrese su frase en ingles</input>
+    <input type="text" id="banned" required>palabra beneada</input>
+    <button onclick="problem2()">Aceptar</button>
+
+    <script>
+        function problem1() {
+            let number = document.getElementById("number").value;
+            let row = 0;
+            let potencia = 2 ** 31 - 1;
+            if (number <= 1 || number >= potencia) {
+                console.log("Verifique sus datos");
+            } else {
+                while (number >= row) {
+                number -= row;
+                row++;
+                }
+                let message = row - 1;
+                alert("the complete rows are " + message);
+            }
+            }
+
+            function problem2() {
+            let phrase = document.getElementById("phrase").value;
+            let banned = document.getElementById("banned").value;
+            let bannedArray = banned.trim().split(/\W/g);
+            let words = phrase.toLowerCase().replace(/\W/g, " ");
+            let wordsArray = words.trim().split(/\W/g);
+            let frequencyMap = new Map();
+            let myBanned = new Set();
+            let wordsNewArray = wordsArray.filter((el) => el != "");
+
+            if (phrase.length >= 1 && phrase.length <= 1000) {
+                if (banned.length >= 0 && banned.length <= 100) {
+                for (let j = 0; j < bannedArray.length; j++) {
+                    myBanned.add(bannedArray[j]);
+                    if (bannedArray[j].length <= 10) {
+                    for (let i = 0; i < wordsNewArray.length; i++) {
+                        let word = wordsNewArray[i];
+                        if (!myBanned.has(word)) {
+                        frequencyMap.set(word, frequencyMap.get(word) + 1 || 1);
+                        }
+                    }
+                    let frequency = 0;
+                    let frequencyWord = "";
+                    for (let [word, freq] of frequencyMap) {
+                        if (freq > frequency) {
+                        frequency = freq;
+                        frequencyWord = word;
+                        }
+                    }
+                    if (frequency == 0) {
+                        alert("no puede banear todas las palabras");
+                    } else {
+                        alert(
+                        "la palabra mas frecuente no baneada es: " + frequencyWord
+                        );
+                    }
+                    } else {
+                    alert("tu palabra baneada esta fuera del rango aceptado");
+                    }
+                }
+                } else {
+                alert("caracteres de baneada fuera de rango");
+                }
+            } else {
+                alert("la frase esta fuera del rango de caracteres aceptados");
+            }
+            }
+    </script>
+</body>
+</html>
